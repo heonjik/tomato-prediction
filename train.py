@@ -26,9 +26,12 @@ def train_yolov8(data_path, model_path, trained_model_path, output_dir):
 def validate_yolov8(model_path, data_path):
     model = YOLO(model_path)
     imgsz=640
-    results = model.val(data=data_path, imgsz=imgsz)
+    metrics = model.val(data=data_path, imgsz=imgsz)
     print("Validation Results:")
-    print(results)
+    print(f"mAP50-95: {metrics.box.map}")
+    print(f"mAP50: {metrics.box.map50}")
+    print(f"mAP75: {metrics.box.map75}")
+    print(f"List of mAP50-95 for each category: {metrics.box.maps}")
 
 def test_yolov8(model_path, image_names, test_path, output_image_dir):
     model = YOLO(model_path)
@@ -60,7 +63,7 @@ if __name__=='__main__':
     #train_yolov8(data_config, initial_model, final_model, output_dir)
 
     # Validate the model
-    #validate_yolov8(final_model, data_config)
+    validate_yolov8(final_model, data_config)
 
     # Test the model on a new image or video
-    test_yolov8(final_model, image_names, test_path, output_image_dir)
+    #test_yolov8(final_model, image_names, test_path, output_image_dir)
