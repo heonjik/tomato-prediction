@@ -1,6 +1,0 @@
-train: "/Users/hyunjikim/Desktop/GitHub/tomato-prediction/dataset/train/images"
-val: "/Users/hyunjikim/Desktop/GitHub/tomato-prediction/dataset/val/images"
-test: "/Users/hyunjikim/Desktop/GitHub/tomato-prediction/dataset/test/images"
-
-n2: 2
-names: ['unripe', 'ripe']
